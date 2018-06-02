@@ -1,0 +1,293 @@
+@keyframes border_retreat_top {
+    0% {
+      transform: translateX(0);
+    } 
+    100% {
+      transform: translateX(-100%);
+    }
+  }
+@keyframes border_retreat_left {
+    0% {
+      transform: translateY(0);
+    }
+    100% {
+      transform: translateY(100%);
+    }
+  }
+@keyframes border_retreat_right {
+    0% {
+        transform: translateY(0);
+    } 
+    100% {
+        transform: translateY(-100%);
+    }
+}
+@keyframes border_retreat_bottom {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(100%);
+    }
+}  
+@keyframes eject__a {
+    0% {
+        top: 250px;
+        transform: rotate(0deg);
+    }
+    5% {
+        top: 130%;
+    }
+    25% {
+        top: 20px;
+    }
+    80% {
+        top: 250px;
+        transform: rotate(860deg);
+    }
+}
+@keyframes eject__b {
+    0%{
+        top: 250px;
+        transform: rotate(0deg);
+    }
+    10% {
+        top: 20px;
+    }
+    30% {
+        top: 180px;
+    }  
+    60%{
+        top: 92px;
+        left: 180px;
+        transform: rotate(860deg);
+    }
+    65%{
+        top: 160px;
+        transform: rotate(360deg);
+    }
+    80% {
+        top: 100px;
+    }
+    92% {
+        top: 160px;
+    }  
+    100%{
+        top: 250px;
+        transform: rotate(0deg);
+    }
+}
+@keyframes eject__c {
+    0% {
+        top: 250px;
+        transform: rotate(0deg);
+    }
+    5% {
+        top: 130%;
+    }
+    25% {
+        top: -50px;
+    }
+    80% {
+        top: 250px;
+        transform: rotate(860deg);
+    }
+}
+
+@keyframes char {
+    0% {
+        content: "";
+        width: 0;
+    }
+    99% {
+        width: 0;
+    }
+    100% {
+        content: "";
+        width: auto;
+    }
+}
+
+@keyframes cursorBlink {
+    0% {
+        opacity: 0;
+    }
+    50% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0 auto;
+}
+
+header {
+    position: absolute;
+    left: 0;
+    top: 0;
+    color: rgba(255, 255, 255, 1);
+    padding: 10px;
+}
+header .title {
+    display: flex;
+    align-items: center;
+    font: normal 32px courier new, monospace;
+}
+header .title .console-prompt {
+    animation: cursorBlink 1s infinite;
+    background-color: rgba(255, 255, 255, 1);
+    margin-top: -10px;
+    margin-left: 2px;
+    width: 12px;
+}
+header .title span:not(.console-prompt):before {
+    animation-name: char;
+}
+header .title span:nth-of-type(1):before {
+    content: "P";
+    animation-duration: 1s;
+}
+header .title span:nth-of-type(2):before {
+    content: "u";
+    animation-duration: 1.2s;
+}
+header .title span:nth-of-type(3):before {
+    content: "r";
+    animation-duration: 1.4s;
+}
+header .title span:nth-of-type(4):before {
+    content: "e";
+    animation-duration: 1.6s;
+}
+header .title span:nth-of-type(5):before {
+    content: "";
+    display: inline-block;
+    width: 10px;
+    animation-duration: 2.4s;
+}
+header .title span:nth-of-type(6):before {
+    content: "C";
+    animation-duration: 3s;
+}
+header .title span:nth-of-type(7):before {
+    content: "S";
+    animation-duration: 3.2s;
+}
+header .title span:nth-of-type(8):before {
+    content: "S";
+    animation-duration: 3.4s;
+}
+  
+.flex-parent{
+    display: flex; 
+    height: 300px;
+    background-color: #222;    
+    align-items: center;
+    justify-content: center;
+}
+
+.box {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 200px;
+    height: 200px;
+    overflow: hidden;
+}
+.box > .border-wrapper.top {
+    animation-name: border_retreat_top;
+    transform-origin: left top;
+}
+.box > .border-wrapper.left {
+    animation-name: border_retreat_left;
+}
+.box > .border-wrapper.bottom {
+    animation-name: border_retreat_bottom;
+}
+.box > .border-wrapper.right {
+    animation-name: border_retreat_right;
+}
+.box .square {
+    width: 20px;
+    height: 20px;
+    background: lightskyblue;
+    animation: 2s linear infinite;
+    position: absolute;
+    left: 25px;
+    top: 100%;
+}
+.box > .square.a {
+    animation-name: eject__a;
+}
+.box > .square.b{
+    animation-name: eject__b;
+}
+.box > .square.c{
+    animation-name: eject__c;
+}
+.box .square.b {
+    left: 50px;
+    animation-delay: .4s;
+}
+.box .square.c {
+    left: 70px;
+    animation-delay: .2s;
+}
+.box .border-wrapper {
+    border: solid 10px tomato;
+    animation: 1s infinite alternate cubic-bezier(0, 0.25, 0.25, 0.5);
+}
+.box .border-wrapper.top {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+}
+.box .border-wrapper.right {
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 100%;
+}
+.box .border-wrapper.bottom {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+}
+.box .border-wrapper.left {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+}
+
+.box:nth-of-type(2) > .border-wrapper.top {
+    animation-delay: -1s;
+}
+.box:nth-of-type(2) > .border-wrapper.left {
+    animation-delay: -1s;
+}
+.box:nth-of-type(2) > .border-wrapper.bottom {
+    animation-delay: -1s;
+}
+.box:nth-of-type(2) > .border-wrapper.right {
+   animation-delay: -1s;
+}
+.box:nth-of-type(2) > .square.a {
+   animation-delay: -1s;
+}
+.box:nth-of-type(2) > .square.b {
+    animation-delay: -.6s;
+}
+.box:nth-of-type(2) > .square.c {
+    animation-delay: -.8s;
+}
